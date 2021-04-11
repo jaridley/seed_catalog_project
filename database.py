@@ -24,12 +24,20 @@ def add_seed_info(connect, seed_information):
     with connect:
         try:
             connect.execute(insert_seed)
-            print(f'Information entered successfully')
+            print(f'Seed information entered successfully')
         except Error:
             print(f'Info not loading {Error}')
 
 
 def get_all_seed_info(connect):
+    with connect:
+        try:
+            connect.execute()
+        except Error:
+            print(Error)
+
+
+def update_seed_information(connect):
     with connect:
         try:
             connect.execute()
