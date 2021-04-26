@@ -1,12 +1,15 @@
 import sqlite3
 from sqlite3 import Error
 
+LIST_INFO = 'SELECT * FROM seed_information;'
+SEED_BY_NAME = 'SELECT * FROM seed_information where Name = ?'
+
 
 def initialize_database():
     try:
         return sqlite3.connect('/Users/jaridley/Database/seed_catalog.db')
     except Error:
-        print(f'executing {Error}')
+        print(f'Did not connect successfully because of {Error}')
 
 
 def create_seed_table(connect):
@@ -14,7 +17,7 @@ def create_seed_table(connect):
         try:
             connect.execute()
         except Error:
-            print(f'Getting {Error}')
+            print(f'Did not create table successfully because of {Error}')
 
 
 def add_seed_info(connect, seed_information):
@@ -29,17 +32,17 @@ def add_seed_info(connect, seed_information):
             print(f'Info not loading {Error}')
 
 
-def get_all_seed_info(connect):
+def get_seed_info(connect):
     with connect:
         try:
-            connect.execute()
+            return connect.execute(LIST_INFO).fetchall()
         except Error:
-            print(Error)
+            print(f'Not getting information for seeds due to {Error}')
 
 
-def update_seed_information(connect):
+def get_seed_info_by_name(connect, name):
     with connect:
         try:
-            connect.execute()
+            return connect.execute(SEED_BY_NAME, (name, )).fetchall()
         except Error:
-            print(Error)
+            print(f'Not getting information for seeds due to {Error}')
