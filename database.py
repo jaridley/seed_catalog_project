@@ -3,6 +3,7 @@ from sqlite3 import Error
 
 LIST_INFO = 'SELECT * FROM seed_information;'
 SEED_BY_NAME = 'SELECT * FROM seed_information where Name = ?'
+SEED_BY_TYPE = 'SELECT * FROM seed_information where Type = ?'
 
 
 def initialize_database():
@@ -44,5 +45,13 @@ def get_seed_info_by_name(connect, name):
     with connect:
         try:
             return connect.execute(SEED_BY_NAME, (name, )).fetchall()
+        except Error:
+            print(f'Not getting information for seeds due to {Error}')
+
+
+def get_seed_info_by_type(connect, seed_type):
+    with connect:
+        try:
+            return connect.execute(SEED_BY_TYPE, (seed_type, )).fetchall()
         except Error:
             print(f'Not getting information for seeds due to {Error}')
