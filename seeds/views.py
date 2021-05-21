@@ -20,10 +20,15 @@ def enter_seeds(request):
         seed_information = Seeds(seed_name=seed_name, seed_variety=seed_variety, seed_type=seed_type,
                                  seed_planting_zone=seed_planting_zone, germination_period=germination_period,
                                  days_to_harvest=days_to_harvest, plant_spacing=plant_spacing,
-                                 row_spacing=row_spacing,plant_depth=plant_depth, sun_requirements=sun_requirements,
+                                 row_spacing=row_spacing, plant_depth=plant_depth, sun_requirements=sun_requirements,
                                  water_requirements=water_requirements)
         seed_information.save()
         messages.success(request, 'Seed information has been entered successfully.')
         return redirect('enter_seeds')
     else:
         return render(request, 'enter_seeds.html', {})
+
+
+def list_seeds(request):
+    all_seeds = Seeds.objects.all()
+    return render(request, 'list_seeds.html', {'seeds': all_seeds})

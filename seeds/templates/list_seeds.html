@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<br/>
+<h1 align="center">Seed Listings</h1>
+<br/>
+<br/>
+<table class="table table-striped table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Seed Name</th>
+            <th scope="col">Variety</th>
+            <th scope="col">Type</th>
+            <th scope="col">Zone</th>
+            <th scope="col">Germination Period</th>
+            <th scope="col">Days to Harvest</th>
+            <th scope="col">Spacing</th>
+            <th scope="col">Row Spacing</th>
+            <th scope="col">Planting Depth</th>
+            <th scope="col">Sun Needed</th>
+            <th scope="col">Water Needed</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for list_seeds in seeds %}
+        <tr>
+            <th scope="row">{{ list_seeds.seed_name }}</th>
+            <td>{{ list_seeds.seed_variety }}</td>
+            <td>{{ list_seeds.seed_type }}</td>
+            <td>{{ list_seeds.seed_planting_zone }}</td>
+            <td>{{ list_seeds.germination_period }}</td>
+            <td>{{ list_seeds.days_to_harvest }}</td>
+            <td>{{ list_seeds.plant_spacing }}</td>
+            <td>{{ list_seeds.row_spacing }}</td>
+            <td>{{ list_seeds.plant_depth }}</td>
+            <td>{{ list_seeds.sun_requirements }}</td>
+            <td>{{ list_seeds.water_requirements }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
