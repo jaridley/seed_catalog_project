@@ -32,3 +32,11 @@ def enter_seeds(request):
 def list_seeds(request):
     all_seeds = Seeds.objects.all()
     return render(request, 'list_seeds.html', {'seeds': all_seeds})
+
+
+def delete(request, seed_id):
+    seeds = Seeds.objects.get(pk=seed_id)
+    seeds.delete()
+    messages.success(request, 'Seed information has been deleted.')
+    return redirect('list_seeds')
+
