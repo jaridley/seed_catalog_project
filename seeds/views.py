@@ -40,3 +40,8 @@ def delete(request, seed_id):
     messages.success(request, 'Seed information has been deleted.')
     return redirect('list_seeds')
 
+
+def edit_seeds(request, seed_id):
+    seeds = Seeds.objects.get(pk=seed_id)
+    return render(request, 'edit_seeds.html', {'seeds': seeds})
+

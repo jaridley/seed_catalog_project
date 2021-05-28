@@ -34,7 +34,8 @@
             <td>{{ list_seeds.plant_depth }}</td>
             <td>{{ list_seeds.sun_requirements }}</td>
             <td>{{ list_seeds.water_requirements }}</td>
-            <td><a href="{% url 'delete' list_seeds.id %}">delete</a></td>
+            <td><a href="{% url 'edit_seeds' list_seeds.id %}" class="btn btn-primary">edit</a></td>
+            <td><a href="{% url 'delete' list_seeds.id %}" class="btn btn-danger">delete</a></td>
         </tr>
     {% endfor %}
     </tbody>

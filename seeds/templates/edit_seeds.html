@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 align="center">Edit Seed Information</h1>
+<br/>
+<br/>
+<div class="container">
+  <form class="contact-form" method="POST" action="{% url 'edit_seeds' list_seeds.id %}">
+    <input type="hidden" name="seed_id" value="{{ list_seeds.id }}"/>
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-md-3 offset-md-3">
+        <label>Enter Seed Name</label>
+        <input name="seed_name" type="text" class="form-control mr-lg-2" value="{{ list_seeds.seed_name }}"/>
+      </div>
+      <div class="col-md-3 offset-md-3">
+        <label>Enter Seed Variety</label>
+        <input name="seed_variety" type="text" class="form-control mr-lg-2" value="{{ list_seeds.seed_variety }}"/>
+      </div>
+    </div>
+    <br/>
+    <br/>
+    <div class="row">
+      <div class="col-md-3 offset-md-3">
+        <label>Enter Seed Type</label>
+        <input name="seed_type" type="text" class="form-control mr-lg-2" value="{{ list_seeds.seed_type }}"/>
+      </div>
+      <div class="col-md-3 offset-md-3">
+        <label>Enter Planting Zone</label>
+        <input name="seed_planting_zone" type="number" class="form-control mr-lg-2" value="{{ list_seeds.seed_planting_zone }}"/>
+      </div>
+    </div>
+    <br/>
+    <br/>
+    <div class="row">
+      <div class="col-md-3 offset-md-3">
+        <label>Enter Germination Period (# of days)</label>
+        <input name="germination_period" type="number" class="form-control mr-lg-2" value="{{ list_seeds.germination_period }}"/>
+      </div>
+      <div class="col-md-3 offset-md-3">
+        <label>Enter Days to Harvest (# of days)</label>
+        <input name="days_to_harvest" type="number" class="form-control mr-lg-2" value="{{ list_seeds.days_to_harvest }}"/>
+      </div>
+    </div>
+    <br/>
+    <br/>
+    <div class="row">
+      <div class="col-md-3 offset-md-3">
+        <label>Enter Plant Space (inches)</label>
+        <input name="plant_spacing" type="number" class="form-control mr-lg-2" value="{{ list_seeds.plant_spacing }}"/>
+      </div>
+      <div class="col-md-3 offset-md-3">
+        <label>Enter Row Space (inches)</label>
+        <input name="row_spacing" type="number" class="form-control mr-lg-2" value="{{ list_seeds.row_spacing }}"/>
+      </div>
+    </div>
+    <br/>
+    <br/>
+    <div class="row">
+      <div class="col-md-3 offset-md-3">
+        <label>Enter Depth (inches)</label>
+        <input name="plant_depth" type="number" class="form-control mr-lg-2" value="{{ list_seeds.plant_depth }}"/>
+      </div>
+      <div class="col-md-3 offset-md-3">
+        <label>Enter How Much Sun Needed (# of days)</label>
+        <input name="sun_requirements" type="number" class="form-control mr-lg-2" value="{{ list_seeds.sun_requirements }}"/>
+      </div>
+    </div>
+    <br/>
+    <br/>
+    <div class="row">
+      <div class="col-md-3 offset-md-3">
+        <label>Enter How Much Water Needed (# of days)</label>
+        <input name="water_requirements" type="number" class="form-control mr-lg-2" value="{{ list_seeds.water_requirements }}"/>
+      </div>
+    </div>
+    <br/>
+    <br/>
+    <div class="col-md-3 offset-md-3">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+
+</div>
+
+{% endblock %}
