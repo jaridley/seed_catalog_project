@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Seeds
+from .forms import SeedForm
 from django.contrib import messages
 
 
@@ -44,4 +45,14 @@ def delete(request, seed_id):
 def edit_seeds(request, seed_id):
     seeds = Seeds.objects.get(pk=seed_id)
     return render(request, 'edit_seeds.html', {'seeds': seeds})
+
+
+def update_seeds(request, seed_id):
+    seeds = Seeds.objects.get(pk=seed_id)
+    seed_form = SeedForm(request.POST or None, instance=seeds)
+    if seed_form.is_valid():
+        seed_form.save()
+        messages.success(request, 'Seed information has been updated successfully.')
+        return redirect('list_seeds')
+    return render(request, 'update_seeds.html', {'seeds': seeds, 'seed_form': seed_form})
 

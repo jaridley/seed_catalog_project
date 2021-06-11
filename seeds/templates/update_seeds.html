@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 align="center">Update Seed Information</h1>
+<br/>
+<div class="container">
+    <form method="POST" action="{% url 'update_seeds' seeds.id %}">
+        {% csrf_token %}
+        {{ seed_form.as_p }}
+        <input type="submit" value="Update" class="btn btn-secondary">
+    </form>
+</div>
+
+{% endblock %}
