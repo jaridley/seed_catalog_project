@@ -4,9 +4,11 @@
 <br/>
 <div class="container">
     <form method="POST" action="{% url 'update_seeds' seeds.id %}">
-        {% csrf_token %}
-        {{ seed_form.as_p }}
-        <input type="submit" value="Update" class="btn btn-secondary">
+        <div class="col-md-3 offset-md-3">
+            {% csrf_token %}
+            {{ seed_form.as_p }}
+            <input type="submit" value="Update" class="btn btn-secondary">
+        </div>
     </form>
 </div>
 
